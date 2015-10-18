@@ -1,12 +1,13 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
 script: bundle exec rspec spec
 before_script:
-  - "bundle exec rake db:setup"
-  # - "bundle exec rake db:seed_fu"
+- bundle exec rake db:setup
 deploy:
   provider: heroku
-  app: payit
   api_key:
-    secure: NXfPmIFmXkjI9W/Y3kqwXPe8nu7/1eOqxJ5EnGkSdV1lYEHqG0uUSm1sx9zPIB/SfK1Ow9StQEesHuQ0XSB2tYrtVBYTdDw1h6BqnWKxQD9veQaP+JjL24GhU6wjgEPUHFggJAXxtEdk7f6ZFHOvviNVw4av2fBUQBF9UET4gJ1m62ozhmkpukMecXWFZ8OMSaqsfZd44tpCgSSkf6Ahg2VmXNZNBfVJY2Su+76X9OKq8QvFWHI9jvzCkJJECR0BFOf7P+d3G8u0KAY+0fbn8KBCbYvhsmLyKToRlD1CqCa3L20vI/lPbEoHyOUettfpm/be7WHIjs/dRZcIV3N0ojh64D8FbWSf8KGRuMlFzIGl7q12czPJutzfdukgJuaah5oJg3Nn8sfz2Yur49AhLD/M0YKRsOAG5FIdvr1azaBgWd3nu1kG/H/7hRmlaCMswLMUr/QLs2kdT/o/BuHfqOOiOCd7dwdkARAWFvTLB8nkZtGEoB1AbHGmg2d1BEftB3kJxw83yAcoVogSAzGWeQ2JeXtmginnOBWvnT1nJt22X5dUs+wSzbZrJraAdSWHOs5LoCmXxDqaGzBav/4bMtk1Qnkzf1NOPmVfgTz3wyrjd2LWGTqfltskJE60+aFW734Gpfiw+l/MXzcXU6S3sCQcTfHy8qqm9UJ65NHsxt4=
+    secure: egl8OAkv1lEzMxAeQ20/K8Jk0IY43uy7s63RSdz51Qh/y83/0UMzxiZg/eMxylbEZxhgitV0hHA+LViZ+5E6FPvdv9V3o4FAO+NM/nU+eBEoiGnr6qXTLV+inCtqgO9HUvLzl7psF7zUtY6oXXoSTIgKNYgA8QXq/7I+RkMvi4ZEQ8lY6u5GCmIqasq6MuGbwsoJOXPsGKl/XLB2ZuW9qQSY+pKiEs5OmurDTylxyAlKbtwYarvUb28Rl8tpHMQYcCl2xh9FVTo+F+yEmI36dZMkUcHi3eGinM51Onqk3JjRQnVId2CcScTQn0X6BLyyZw+OeChtH2aL2e9soLi4Lbn1Vh1JTBRyn9GZyrOdHkkdDagxTcB0R8ogdNmqsBj75qx8A8X+NORUbRh0cFBDcBftIc00u08sBRtb9qSGhqSzBhBwSkCjiaukKQX0b3wx4hFNFZDP441yiqUplcnur6tsGC6HN0qK2ClVcp9WapDIv2oCFL6yFAzzfrean8/tojf8dVnZRyqZKZrdFBartGPMvmmKBK59UkhxQABRvQ3F5yDrvZZBwl6SdI5XdV2jp2Eu0vPZkbY2ub2smOb2eNXgwxdCgCt1cuWiY1aax4adgbk9ZeepUqJOuEESff0XyMwHM1/6wLgpGQ0Q+IDypR03Nz87Xrjaw6qvzlKZcPY=
+  app: payit
+  on:
+    repo: lenzenc/payit
