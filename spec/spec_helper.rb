@@ -1,6 +1,9 @@
 if ENV['TRAVIS']
   require 'coveralls'
-  Coveralls.wear!
+  Coveralls.wear! 'rails'
+else
+  require 'simplecov'
+  SimpleCov.start 'rails'
 end
 
 RSpec.configure do |config|

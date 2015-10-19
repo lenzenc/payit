@@ -95,3 +95,7 @@ com_crashlytics_export_strings.xml
 # SBT #
 ##########
 target/
+
+# Rails #
+###########
+coverage/
