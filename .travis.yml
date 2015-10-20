@@ -5,12 +5,15 @@ script: bundle exec rspec spec
 before_script:
 - bundle exec rake db:setup
 - "bundle exec rake db:seed_fu"
-after_deploy:
-  - "bundle exec rake db:seed_fu"
 deploy:
   provider: heroku
   api_key:
     secure: egl8OAkv1lEzMxAeQ20/K8Jk0IY43uy7s63RSdz51Qh/y83/0UMzxiZg/eMxylbEZxhgitV0hHA+LViZ+5E6FPvdv9V3o4FAO+NM/nU+eBEoiGnr6qXTLV+inCtqgO9HUvLzl7psF7zUtY6oXXoSTIgKNYgA8QXq/7I+RkMvi4ZEQ8lY6u5GCmIqasq6MuGbwsoJOXPsGKl/XLB2ZuW9qQSY+pKiEs5OmurDTylxyAlKbtwYarvUb28Rl8tpHMQYcCl2xh9FVTo+F+yEmI36dZMkUcHi3eGinM51Onqk3JjRQnVId2CcScTQn0X6BLyyZw+OeChtH2aL2e9soLi4Lbn1Vh1JTBRyn9GZyrOdHkkdDagxTcB0R8ogdNmqsBj75qx8A8X+NORUbRh0cFBDcBftIc00u08sBRtb9qSGhqSzBhBwSkCjiaukKQX0b3wx4hFNFZDP441yiqUplcnur6tsGC6HN0qK2ClVcp9WapDIv2oCFL6yFAzzfrean8/tojf8dVnZRyqZKZrdFBartGPMvmmKBK59UkhxQABRvQ3F5yDrvZZBwl6SdI5XdV2jp2Eu0vPZkbY2ub2smOb2eNXgwxdCgCt1cuWiY1aax4adgbk9ZeepUqJOuEESff0XyMwHM1/6wLgpGQ0Q+IDypR03Nz87Xrjaw6qvzlKZcPY=
   app: payit
+  run:
+    - "rake db:drop"
+    - "rake db:setup"
+    - "rake db:migrate"
+    - "rake db:seed_fu"
   on:
     repo: lenzenc/payit
