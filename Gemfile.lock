@@ -78,6 +78,13 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -208,6 +215,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   devise
+  haml-rails
   jbuilder (~> 2.0)
   jquery-rails
   pg
