@@ -22,6 +22,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'seed-fu'
+
 group :development, :test do
   gem 'byebug'
   gem "rspec-rails"
