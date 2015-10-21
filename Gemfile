@@ -28,11 +28,18 @@ gem 'seed-fu'
 group :development, :test do
   gem 'byebug'
   gem "rspec-rails"
+  gem "database_cleaner"
+  gem 'factory_girl_rails'
+  gem "awesome_print"
+  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'simplecov', require: false
   gem 'coveralls', require: false
+  gem 'rspec-its'
+  gem 'should_not'
+  gem 'fuubar'
 end
 
 group :development do

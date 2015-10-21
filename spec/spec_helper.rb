@@ -5,15 +5,21 @@ else
   require 'simplecov'
   SimpleCov.start 'rails'
 end
+require 'devise'
 
 RSpec.configure do |config|
 
-  config.expect_with :rspec do |expectations|
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  config.alias_it_should_behave_like_to :it_validates, "it_validates"
+  config.alias_it_should_behave_like_to :it_raises, "it_raises"
+  config.alias_it_should_behave_like_to :it_raises_error, "it_raises_error"
+
+  module OneLinerExpectSyntax
+    def expects(subject)
+      expect(subject)
+    end
   end
 
-  config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
-  end
+  config.include OneLinerExpectSyntax
+  config.include Devise::TestHelpers, :type => :controller
 
 end
