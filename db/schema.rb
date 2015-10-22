@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020131248) do
+ActiveRecord::Schema.define(version: 20151021185142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name",       limit: 100,                null: false
+    t.string   "domain",     limit: 100,                null: false
+    t.boolean  "is_active",              default: true, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "customers", ["domain"], name: "IDX_UNQ_DOMAIN", unique: true, using: :btree
+  add_index "customers", ["name"], name: "IDX_UNQ_NAME", unique: true, using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
