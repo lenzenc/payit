@@ -29,3 +29,10 @@ en:
   login_password_label: "Password"
   login_remember_me: "Remember Me"
 
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              customer_domain: "must use your company's domain."

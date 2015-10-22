@@ -40,6 +40,7 @@ group :test do
   gem 'rspec-its'
   gem 'should_not'
   gem 'fuubar'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
