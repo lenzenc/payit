@@ -22,4 +22,23 @@ RSpec.describe Customer, :type => :model do
 
   end
 
+  describe ".default_user" do
+
+    let(:customer) { build :customer }
+    subject { customer.default_user }
+
+    it { should_not be_nil }
+    its(:first_name) { should eq("PayIt") }
+    its(:last_name) { should eq("Admin") }
+    its(:employee_id) { should eq("payit.admin") }
+    its(:email) { should eq("payitadmin@#{customer.domain}") }
+    its(:username) { should eq("payitadmin@#{customer.domain}") }
+    its(:password) { should eq("payit123") }
+    its(:password_confirmation) { should eq("payit123") }
+    its(:customer) { should eq(customer) }
+
+    it { should be_valid }
+
+  end
+
 end
