@@ -34,8 +34,26 @@ en:
     customers: "Customers"
     logout: "Logout"
 
+  customers:
+    title: "PayIt Customer List"
+    table:
+      header:
+        name: "Name"
+        domain: "Domain"
+    form:
+      new:
+        title: "New Customer"
+        domain_placeholder: "e.g. company.com"
+
   activerecord:
+    help:
+    attributes:
+      customer:
+        name: "Name"
+        domain: "Domain"
     errors:
+      messages:
+        invalid_domain: "invalid domain format, e.g. 'company.com'"
       models:
         user:
           attributes:

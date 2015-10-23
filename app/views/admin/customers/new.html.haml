@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-2
+    .col-md-8
+      .well
+        = bootstrap_form_for [:admin, @customer], layout: :horizontal, label_col: "col-md-3", control_col: "col-md-9" do |f|
+          %fieldset
+            %legend= t('customers.form.new.title')
+            = f.text_field :name, autofocus: true
+            = f.text_field :domain, placeholder: t('customers.form.new.domain_placeholder')
+          .text-center
+            = f.submit t('btn.save'), class: "btn btn-primary"
+            = link_to t('btn.cancel'), admin_customers_path, class: "btn btn-default"
+    .col-md-2
