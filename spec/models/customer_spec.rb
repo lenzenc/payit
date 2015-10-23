@@ -30,7 +30,7 @@ RSpec.describe Customer, :type => :model do
     it { should_not be_nil }
     its(:first_name) { should eq("PayIt") }
     its(:last_name) { should eq("Admin") }
-    its(:employee_id) { should eq("payit.admin") }
+    its(:employee_id) { should be_nil }
     its(:email) { should eq("payitadmin@#{customer.domain}") }
     its(:username) { should eq("payitadmin@#{customer.domain}") }
     its(:password) { should eq("payit123") }

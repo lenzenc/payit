@@ -9,7 +9,6 @@ class Customer < ActiveRecord::Base
     User.new(
       first_name: 'PayIt',
       last_name: 'Admin',
-      employee_id: 'payit.admin',
       email: "payitadmin@#{domain}",
       username: "payitadmin@#{domain}",
       password: DEFAULT_PWD,
