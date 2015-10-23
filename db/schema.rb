@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20151022115225) do
     t.datetime "updated_at"
     t.string   "first_name",             limit: 100,                null: false
     t.string   "last_name",              limit: 100,                null: false
-    t.string   "employee_id",            limit: 100,                null: false
+    t.string   "employee_id",            limit: 100
     t.boolean  "is_active",                          default: true, null: false
     t.integer  "customer_id",                                       null: false
   end

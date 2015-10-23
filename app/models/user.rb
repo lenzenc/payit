@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { maximum: 100 }
   validates :last_name, presence: true, length: { maximum: 100 }
-  validates :employee_id, presence: true, length: { maximum: 100 }, uniqueness: { scope: :customer_id }
+  validates :employee_id, length: { maximum: 100 }, uniqueness: { scope: :customer_id }
   validates :email, presence: true, length: { maximum: 100 }
   validates :customer, presence: true
   validate :username_has_customer_domain
