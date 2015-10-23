@@ -29,6 +29,11 @@ en:
   login_password_label: "Password"
   login_remember_me: "Remember Me"
 
+  top_nav:
+    home: "Home"
+    customers: "Customers"
+    logout: "Logout"
+
   activerecord:
     errors:
       models:
