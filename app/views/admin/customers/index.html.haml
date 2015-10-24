@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-6
+      %h4= t('customers.title')
+    .col-md-6
+      %span.pull-right
+        = link_to new_admin_customer_path, class: "btn btn-warning btn-sm" do
+          %span.glyphicon.glyphicon-plus
+          = t('btn.add')
+  %hr
+  .row
+    .col-md-12
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th= t('customers.table.header.name')
+            %th= t('customers.table.header.domain')
+        %tbody
+          - @customers.each do |c|
+            %tr
+              %td= c.name
+              %td= c.domain
