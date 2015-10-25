@@ -3,12 +3,13 @@
     .col-md-2
     .col-md-8
       .well
-        = bootstrap_form_for [:admin, @customer], layout: :horizontal, label_col: "col-md-3", control_col: "col-md-9" do |f|
+        = bootstrap_form_for [:admin, @customer], layout: :horizontal, label_col: "col-md-3", control_col: "col-md-9", inline_errors: false do |f|
           %fieldset
             %legend= t('customers.form.new.title')
+            = f.alert_message t('global.form.errors')
             = f.text_field :name, autofocus: true
             = f.text_field :domain, placeholder: t('customers.form.new.domain_placeholder')
           .text-center
-            = f.submit t('btn.save'), class: "btn btn-primary"
-            = link_to t('btn.cancel'), admin_customers_path, class: "btn btn-default"
+            = f.submit t('btn.save'), class: "btn btn-primary", id: "save_customer"
+            = link_to t('btn.cancel'), admin_customers_path, class: "btn btn-default", id: "cancel_new_customer"
     .col-md-2

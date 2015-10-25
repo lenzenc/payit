@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'seed-fu'
+gem 'rubocop', require: false
 
 group :development, :test do
   gem 'byebug'
@@ -33,6 +34,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "awesome_print"
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :test do

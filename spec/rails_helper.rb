@@ -5,6 +5,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/its'
 require 'devise'
+require 'capybara/rails'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
@@ -17,6 +18,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryGirl::Syntax::Methods
+  config.include LoginHelpers, type: :feature
+  config.include UIHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

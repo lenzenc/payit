@@ -23,6 +23,8 @@ en:
     app_name: "PayIt"
     branding: "PayIt"
     user_name: "%{first_name} %{last_name}"
+    form:
+      errors: "Please fix the errors below."
 
   login_title: "Please Sign In"
   login_username_label: "Username"

@@ -7,6 +7,5 @@ FactoryGirl.define do
     sequence(:username) { |n| "username#{n}@#{customer.domain}" unless customer.nil? }
     email { username }
     password "pwd12345"
-    encrypted_password "pwd12345"
   end
 end
