@@ -19,6 +19,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include LoginHelpers, type: :feature
+  config.include UIHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

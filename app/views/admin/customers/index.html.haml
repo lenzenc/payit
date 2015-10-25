@@ -4,7 +4,7 @@
       %h4= t('customers.title')
     .col-md-6
       %span.pull-right
-        = link_to new_admin_customer_path, class: "btn btn-warning btn-sm" do
+        = link_to new_admin_customer_path, class: "btn btn-warning btn-sm", id: 'add_customer' do
           %span.glyphicon.glyphicon-plus
           = t('btn.add')
   %hr
