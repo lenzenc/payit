@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026125944) do
+ActiveRecord::Schema.define(version: 20151026151102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,16 +24,16 @@ ActiveRecord::Schema.define(version: 20151026125944) do
     t.datetime "updated_at",                            null: false
   end
 
-  add_index "customers", ["domain"], name: "IDX_UNQ_DOMAIN", unique: true, using: :btree
-  add_index "customers", ["name"], name: "IDX_UNQ_NAME", unique: true, using: :btree
+  add_index "customers", ["domain"], name: "IDX_UNQ_CUSTOMER_DOMAIN", unique: true, using: :btree
+  add_index "customers", ["name"], name: "IDX_UNQ_CUSTOMER_NAME", unique: true, using: :btree
 
   create_table "permission_groups", force: :cascade do |t|
     t.string "code", limit: 20,  null: false
     t.string "name", limit: 100, null: false
   end
 
-  add_index "permission_groups", ["code"], name: "index_permission_groups_on_code", unique: true, using: :btree
-  add_index "permission_groups", ["name"], name: "index_permission_groups_on_name", unique: true, using: :btree
+  add_index "permission_groups", ["code"], name: "IDX_UNQ_PERM_GRP_CODE", unique: true, using: :btree
+  add_index "permission_groups", ["name"], name: "IDX_UNQ_PERM_GRP_NAME", unique: true, using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.string  "code",                limit: 20,  null: false
@@ -41,8 +41,21 @@ ActiveRecord::Schema.define(version: 20151026125944) do
     t.integer "permission_group_id",             null: false
   end
 
-  add_index "permissions", ["code"], name: "index_permissions_on_code", unique: true, using: :btree
-  add_index "permissions", ["name"], name: "index_permissions_on_name", unique: true, using: :btree
+  add_index "permissions", ["code"], name: "IDX_UNQ_PERM_CODE", unique: true, using: :btree
+  add_index "permissions", ["name"], name: "IDX_UNQ_PERM_NAME", unique: true, using: :btree
+
+  create_table "permissions_roles", id: false, force: :cascade do |t|
+    t.integer "role_id",       null: false
+    t.integer "permission_id", null: false
+  end
+
+  add_index "permissions_roles", ["role_id", "permission_id"], name: "IDX_UNIQ_ROLE_PERM", unique: true, using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+  end
+
+  add_index "roles", ["name"], name: "IDX_UNQ_ROLE_NAME", unique: true, using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false

@@ -5,7 +5,7 @@ class CreatePermissions < ActiveRecord::Migration
       t.string :name, null: false, limit: 100
       t.references :permission_group, null: false
     end
-    add_index :permissions, :code, unique: true
-    add_index :permissions, :name, unique: true
+    add_index :permissions, :code, unique: true, name: "IDX_UNQ_PERM_CODE"
+    add_index :permissions, :name, unique: true, name: "IDX_UNQ_PERM_NAME"
   end
 end

@@ -5,6 +5,7 @@ RSpec.describe Permission, :type => :model do
   describe "Associations" do
 
     it { should belong_to(:permission_group) }
+    it { should have_and_belong_to_many(:roles) }
 
   end
 

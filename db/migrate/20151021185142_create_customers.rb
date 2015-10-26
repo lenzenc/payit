@@ -6,7 +6,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.boolean :is_active, null: false, default: true
       t.timestamps null: false
     end
-    add_index :customers, :name, unique: true, name: "IDX_UNQ_NAME"
-    add_index :customers, :domain, unique: true, name: "IDX_UNQ_DOMAIN"
+    add_index :customers, :name, unique: true, name: "IDX_UNQ_CUSTOMER_NAME"
+    add_index :customers, :domain, unique: true, name: "IDX_UNQ_CUSTOMER_DOMAIN"
   end
 end
