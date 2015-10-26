@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022115225) do
+ActiveRecord::Schema.define(version: 20151026125944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 20151022115225) do
 
   add_index "customers", ["domain"], name: "IDX_UNQ_DOMAIN", unique: true, using: :btree
   add_index "customers", ["name"], name: "IDX_UNQ_NAME", unique: true, using: :btree
+
+  create_table "permission_groups", force: :cascade do |t|
+    t.string "code", limit: 20,  null: false
+    t.string "name", limit: 100, null: false
+  end
+
+  add_index "permission_groups", ["code"], name: "index_permission_groups_on_code", unique: true, using: :btree
+  add_index "permission_groups", ["name"], name: "index_permission_groups_on_name", unique: true, using: :btree
+
+  create_table "permissions", force: :cascade do |t|
+    t.string  "code",                limit: 20,  null: false
+    t.string  "name",                limit: 100, null: false
+    t.integer "permission_group_id",             null: false
+  end
+
+  add_index "permissions", ["code"], name: "index_permissions_on_code", unique: true, using: :btree
+  add_index "permissions", ["name"], name: "index_permissions_on_name", unique: true, using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
