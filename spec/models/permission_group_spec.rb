@@ -5,6 +5,7 @@ RSpec.describe PermissionGroup, :type => :model do
   describe "Associations" do
 
     it { should have_many(:permissions) }
+    it { should have_and_belong_to_many(:feature_modules) }
 
   end
 

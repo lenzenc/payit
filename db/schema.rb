@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026151102) do
+ActiveRecord::Schema.define(version: 20151026164338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,30 @@ ActiveRecord::Schema.define(version: 20151026151102) do
 
   add_index "customers", ["domain"], name: "IDX_UNQ_CUSTOMER_DOMAIN", unique: true, using: :btree
   add_index "customers", ["name"], name: "IDX_UNQ_CUSTOMER_NAME", unique: true, using: :btree
+
+  create_table "feature_modules", force: :cascade do |t|
+    t.string   "code",       limit: 20,                 null: false
+    t.boolean  "is_visible",            default: true,  null: false
+    t.boolean  "is_default",            default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feature_modules", ["code"], name: "IDX_UNIQ_FEAT_MOD_NAME", unique: true, using: :btree
+
+  create_table "feature_modules_permission_groups", id: false, force: :cascade do |t|
+    t.integer "feature_module_id",   null: false
+    t.integer "permission_group_id", null: false
+  end
+
+  add_index "feature_modules_permission_groups", ["feature_module_id", "permission_group_id"], name: "IDX_UNIQ_MOD_PERM_GRP", unique: true, using: :btree
+
+  create_table "feature_modules_roles", id: false, force: :cascade do |t|
+    t.integer "feature_module_id", null: false
+    t.integer "role_id",           null: false
+  end
+
+  add_index "feature_modules_roles", ["feature_module_id", "role_id"], name: "IDX_UNIQ_FEAT_MOD_ROLE", unique: true, using: :btree
 
   create_table "permission_groups", force: :cascade do |t|
     t.string "code", limit: 20,  null: false
