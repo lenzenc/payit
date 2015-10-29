@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :validatable, :timeoutable, :lockable
 
   belongs_to :customer
+  has_and_belongs_to_many :roles
 
   validates :first_name, presence: true, length: { maximum: 100 }
   validates :last_name, presence: true, length: { maximum: 100 }

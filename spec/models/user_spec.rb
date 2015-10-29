@@ -3,6 +3,7 @@ RSpec.describe User, :type => :model do
   describe "Associations" do
 
     it { should belong_to :customer }
+    it { should have_and_belong_to_many(:roles) }
 
   end
 

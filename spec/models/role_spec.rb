@@ -6,6 +6,7 @@ RSpec.describe Role, :type => :model do
 
     it { should have_and_belong_to_many(:permissions) }
     it { should have_and_belong_to_many(:feature_modules) }
+    it { should have_and_belong_to_many(:users) }
 
   end
 
