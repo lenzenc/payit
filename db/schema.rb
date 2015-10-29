@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029160652) do
+ActiveRecord::Schema.define(version: 20151029192430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20151029160652) do
 
   add_index "customers", ["domain"], name: "IDX_UNQ_CUSTOMER_DOMAIN", unique: true, using: :btree
   add_index "customers", ["name"], name: "IDX_UNQ_CUSTOMER_NAME", unique: true, using: :btree
+
+  create_table "customers_feature_modules", id: false, force: :cascade do |t|
+    t.integer "customer_id",       null: false
+    t.integer "feature_module_id", null: false
+  end
+
+  add_index "customers_feature_modules", ["feature_module_id", "customer_id"], name: "IDX_UNIQ_CUSTOMER_FEAT_MOD", unique: true, using: :btree
 
   create_table "feature_modules", force: :cascade do |t|
     t.string   "code",       limit: 20,                 null: false

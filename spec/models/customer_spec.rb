@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Customer, :type => :model do
 
+  describe "Associations" do
+
+    it { should have_and_belong_to_many(:feature_modules) }
+
+  end
+
   describe "Validations" do
 
     subject { build(:customer) }

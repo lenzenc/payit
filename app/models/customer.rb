@@ -1,5 +1,7 @@
 class Customer < ActiveRecord::Base
 
+  has_and_belongs_to_many :feature_modules
+
   validates :name, presence: true, length: { maximum: 100 }, uniqueness: true
   validates :domain, presence: true, length: { maximum: 100 }, uniqueness: true, format: { with: /.+\..+/i, message: :invalid_domain }
 

@@ -6,6 +6,7 @@ RSpec.describe FeatureModule, :type => :model do
 
     it { should have_and_belong_to_many(:roles) }
     it { should have_and_belong_to_many(:permission_groups) }
+    it { should have_and_belong_to_many(:customers) }
 
   end
 
