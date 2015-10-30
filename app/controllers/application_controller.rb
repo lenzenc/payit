@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def can?(permission)
+    return false if permission.nil? || current_user.nil?
+    current_user.permission_codes.include?(permission.upcase)
+  end
+
   def access_denied!
     render "errors/access_denied", layout: "errors", status: 404
   end
