@@ -36,6 +36,12 @@ en:
     customers: "Customers"
     logout: "Logout"
 
+  views:
+    errors:
+      access_denied:
+        title: "Access Denied"
+        desc: "You are not allowed to access this page."
+
   customers:
     title: "PayIt Customer List"
     table:

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def access_denied!
+    render "errors/access_denied", layout: "errors", status: 404
+  end
+
   protected
 
   def configure_permitted_parameters
