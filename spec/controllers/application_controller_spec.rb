@@ -65,4 +65,40 @@ RSpec.describe ApplicationController, :type => :controller do
 
   end
 
+  describe ".method_missing" do
+
+      let(:auth_method) { nil }
+      let(:user) { build(
+        :user,
+        roles: [build(
+          :role,
+          permission_codes: ["VIEW_CUSTOMER"])])
+      }
+
+      before {
+        allow(controller).to receive(:current_user).and_return(user)
+      }
+
+      subject { controller.method_missing auth_method }
+
+      context "when defined method does not start and end with authorize_**!" do
+        subject { -> { controller.method_missing :invalid_authorize_method } }
+        it { should raise_error /undefined method/ }
+      end
+
+      context "when current_user has given permission" do
+        let(:auth_method) { :authorize_view_customer! }
+        it { should be_nil }
+      end
+
+      context "when current_user does not have given permission" do
+        let(:auth_method) { :authorize_add_edit_customer! }
+        before {
+          expect(controller).to receive(:access_denied!).and_return(false)
+        }
+        it { should be false }
+      end
+
+  end
+
 end

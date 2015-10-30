@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :can?
+
+  def method_missing(method_sym, *arguments, &block)
+    if method_sym.to_s =~ /^authorize_(.*)!$/
+      return access_denied! unless can?($1)
+    else
+      super
+    end
+  end
+
   def can?(permission)
     return false if permission.nil? || current_user.nil?
     current_user.permission_codes.include?(permission.upcase)
