@@ -88,4 +88,45 @@ RSpec.describe User, :type => :model do
 
   end
 
+  describe ".permission_codes" do
+
+    let(:roles) { [] }
+    let(:user) { build :user, roles: roles }
+    subject { user.permission_codes }
+
+    context "when there are no roles" do
+      it { should be_empty }
+    end
+
+    context "when there is one role with one permission" do
+      let(:roles) { [build(:role, permission_codes: %w(R1-P1))] }
+      it { should contain_exactly("R1-P1") }
+    end
+
+    context "when there is multiple roles with one permission each" do
+      let(:roles) { [
+        build(:role, permission_codes: %w(R1-P1)),
+        build(:role, permission_codes: %w(R2-P1))
+      ] }
+      it { should contain_exactly("R1-P1", "R2-P1") }
+    end
+
+    context "when there is multiple role with multiple permissions each" do
+      let(:roles) { [
+        build(:role, permission_codes: %w(R1-P1 R1-P2)),
+        build(:role, permission_codes: %w(R2-P1 R2-P2))
+      ] }
+      it { should contain_exactly("R1-P1", "R1-P2", "R2-P1", "R2-P2") }
+    end
+
+    context "when there is multiple roles with the same permission codes" do
+      let(:roles) { [
+        build(:role, permission_codes: %w(P1)),
+        build(:role, permission_codes: %w(P1))
+      ] }
+      it { should contain_exactly("P1") }
+    end
+
+  end
+
 end

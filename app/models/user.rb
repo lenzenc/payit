@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
 
   end
 
+  def permission_codes()
+    codes = []
+    roles.each { |role|
+      codes << role.permissions.collect { |permission| permission.code }
+    }
+    codes.flatten.uniq
+  end
+
   private
 
   def username_has_customer_domain
