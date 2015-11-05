@@ -35,6 +35,8 @@ en:
     home: "Home"
     customers: "Customers"
     logout: "Logout"
+    admin: "Administration"
+    settings: "Settings"
 
   views:
     errors:

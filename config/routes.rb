@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :settings, only: :index
+
   namespace :admin do
 
     resources :customers
