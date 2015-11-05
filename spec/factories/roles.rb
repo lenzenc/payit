@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :role do
-    ignore do
+    transient do
       permission_codes []
     end
     sequence(:name) { |n| "Role#{n}" }
