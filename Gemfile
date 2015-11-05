@@ -12,6 +12,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem "haml-rails"
 gem "font-awesome-rails", '~> 4.4.0.0'
 gem 'bootstrap_form'
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
